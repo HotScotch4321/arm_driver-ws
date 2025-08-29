@@ -1,0 +1,67 @@
+[0.048s] Invoking command in '/home/maxim/projects/arm_driver-ws/build/perseus_arm': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/maxim/projects/arm_driver-ws/build/perseus_arm -- -j8 -l8
+[0.300s] -- Found ament_cmake: 2.5.4 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[1.507s] -- Found rclcpp: 28.1.11 (/opt/ros/jazzy/share/rclcpp/cmake)
+[2.188s] -- Found rosidl_generator_c: 4.6.6 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+[2.258s] -- Found rosidl_generator_cpp: 4.6.6 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+[2.356s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[2.477s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[2.943s] -- Found rmw_implementation_cmake: 7.3.2 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+[2.951s] -- Found rmw_fastrtps_cpp: 8.4.3 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)
+[3.496s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[3.788s] -- Found rclcpp_lifecycle: 28.1.11 (/opt/ros/jazzy/share/rclcpp_lifecycle/cmake)
+[3.913s] -- Found sensor_msgs: 5.3.6 (/opt/ros/jazzy/share/sensor_msgs/cmake)
+[4.293s] -- Found ros2_control: 4.35.0 (/opt/ros/jazzy/share/ros2_control/cmake)
+[4.296s] -- Found ros2_controllers: 4.30.1 (/opt/ros/jazzy/share/ros2_controllers/cmake)
+[4.299s] -- Found joint_state_broadcaster: 4.30.1 (/opt/ros/jazzy/share/joint_state_broadcaster/cmake)
+[5.727s] -- Found joint_trajectory_controller: 4.30.1 (/opt/ros/jazzy/share/joint_trajectory_controller/cmake)
+[5.902s] -- Found eigen3_cmake_module: 0.3.0 (/opt/ros/jazzy/share/eigen3_cmake_module/cmake)
+[5.907s] -- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+[6.513s] -- Found moveit_core: 2.12.3 (/opt/ros/jazzy/share/moveit_core/cmake)
+[6.650s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.83.0/BoostConfig.cmake (found version "1.83.0") found components: chrono date_time filesystem iostreams program_options regex serialization system thread 
+[8.652s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.83.0/BoostConfig.cmake (found version "1.83.0") found components: filesystem 
+[10.012s] -- Found moveit_ros_planning: 2.12.3 (/opt/ros/jazzy/share/moveit_ros_planning/cmake)
+[10.044s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.83.0/BoostConfig.cmake (found version "1.83.0") found components: system filesystem date_time program_options thread chrono 
+[10.304s] -- Found moveit_ros_planning_interface: 2.12.3 (/opt/ros/jazzy/share/moveit_ros_planning_interface/cmake)
+[10.331s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.83.0/BoostConfig.cmake (found version "1.83.0") found components: date_time filesystem program_options system thread 
+[10.430s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.83.0/BoostConfig.cmake (found version "1.83.0") found components: thread system filesystem regex date_time program_options 
+[10.595s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.83.0/BoostConfig.cmake (found version "1.83.0") found components: system filesystem date_time program_options thread 
+[10.889s] -- Found moveit_kinematics: 2.12.3 (/opt/ros/jazzy/share/moveit_kinematics/cmake)
+[10.898s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.83.0/BoostConfig.cmake (found version "1.83.0") found components: program_options system 
+[10.940s] -- Found moveit_planners: 2.12.3 (/opt/ros/jazzy/share/moveit_planners/cmake)
+[10.942s] -- Found moveit_simple_controller_manager: 2.12.3 (/opt/ros/jazzy/share/moveit_simple_controller_manager/cmake)
+[10.950s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.83.0/BoostConfig.cmake (found version "1.83.0") found components: thread 
+[10.974s] -- Found pick_ik: 1.1.1 (/opt/ros/jazzy/share/pick_ik/cmake)
+[11.010s] -- Found ament_lint_auto: 0.17.3 (/opt/ros/jazzy/share/ament_lint_auto/cmake)
+[11.193s] -- Configuring done (11.0s)
+[11.226s] -- Generating done (0.0s)
+[11.242s] -- Build files have been written to: /home/maxim/projects/arm_driver-ws/build/perseus_arm
+[11.344s] Invoked command in '/home/maxim/projects/arm_driver-ws/build/perseus_arm' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/maxim/projects/arm_driver-ws/build/perseus_arm -- -j8 -l8
+[11.388s] Invoking command in '/home/maxim/projects/arm_driver-ws/build/perseus_arm': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --install /home/maxim/projects/arm_driver-ws/build/perseus_arm
+[11.436s] -- Install configuration: ""
+[11.437s] -- Installing: /home/maxim/projects/arm_driver-ws/install/perseus_arm/share/perseus_arm/assets
+[11.437s] -- Installing: /home/maxim/projects/arm_driver-ws/install/perseus_arm/share/perseus_arm/assets/compound.stl
+[11.439s] -- Installing: /home/maxim/projects/arm_driver-ws/install/perseus_arm/share/perseus_arm/assets/arm_round.stl
+[11.440s] -- Installing: /home/maxim/projects/arm_driver-ws/install/perseus_arm/share/perseus_arm/assets/shoulder.stl
+[11.443s] -- Installing: /home/maxim/projects/arm_driver-ws/install/perseus_arm/share/perseus_arm/assets/piece.stl
+[11.443s] -- Installing: /home/maxim/projects/arm_driver-ws/install/perseus_arm/share/perseus_arm/assets/base.stl
+[11.444s] -- Installing: /home/maxim/projects/arm_driver-ws/install/perseus_arm/share/perseus_arm/assets/top_servo_plate.stl
+[11.444s] -- Installing: /home/maxim/projects/arm_driver-ws/install/perseus_arm/share/perseus_arm/assets/bottom_servo_plate.stl
+[11.444s] -- Installing: /home/maxim/projects/arm_driver-ws/install/perseus_arm/share/perseus_arm/assets/upper_arm.stl
+[11.446s] -- Installing: /home/maxim/projects/arm_driver-ws/install/perseus_arm/share/perseus_arm/urdf/robot.urdf
+[11.447s] -- Up-to-date: /home/maxim/projects/arm_driver-ws/install/perseus_arm/share/perseus_arm/package.xml
+[11.448s] -- Up-to-date: /home/maxim/projects/arm_driver-ws/install/perseus_arm/share/ament_index/resource_index/package_run_dependencies/perseus_arm
+[11.448s] -- Installing: /home/maxim/projects/arm_driver-ws/install/perseus_arm/share/ament_index/resource_index/parent_prefix_path/perseus_arm
+[11.449s] -- Up-to-date: /home/maxim/projects/arm_driver-ws/install/perseus_arm/share/perseus_arm/environment/ament_prefix_path.sh
+[11.450s] -- Up-to-date: /home/maxim/projects/arm_driver-ws/install/perseus_arm/share/perseus_arm/environment/ament_prefix_path.dsv
+[11.450s] -- Up-to-date: /home/maxim/projects/arm_driver-ws/install/perseus_arm/share/perseus_arm/environment/path.sh
+[11.451s] -- Up-to-date: /home/maxim/projects/arm_driver-ws/install/perseus_arm/share/perseus_arm/environment/path.dsv
+[11.451s] -- Up-to-date: /home/maxim/projects/arm_driver-ws/install/perseus_arm/share/perseus_arm/local_setup.bash
+[11.452s] -- Up-to-date: /home/maxim/projects/arm_driver-ws/install/perseus_arm/share/perseus_arm/local_setup.sh
+[11.452s] -- Up-to-date: /home/maxim/projects/arm_driver-ws/install/perseus_arm/share/perseus_arm/local_setup.zsh
+[11.453s] -- Up-to-date: /home/maxim/projects/arm_driver-ws/install/perseus_arm/share/perseus_arm/local_setup.dsv
+[11.453s] -- Installing: /home/maxim/projects/arm_driver-ws/install/perseus_arm/share/perseus_arm/package.dsv
+[11.455s] -- Up-to-date: /home/maxim/projects/arm_driver-ws/install/perseus_arm/share/ament_index/resource_index/packages/perseus_arm
+[11.456s] -- Up-to-date: /home/maxim/projects/arm_driver-ws/install/perseus_arm/share/perseus_arm/cmake/perseus_armConfig.cmake
+[11.457s] -- Up-to-date: /home/maxim/projects/arm_driver-ws/install/perseus_arm/share/perseus_arm/cmake/perseus_armConfig-version.cmake
+[11.458s] -- Up-to-date: /home/maxim/projects/arm_driver-ws/install/perseus_arm/share/perseus_arm/package.xml
+[11.463s] Invoked command in '/home/maxim/projects/arm_driver-ws/build/perseus_arm' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --install /home/maxim/projects/arm_driver-ws/build/perseus_arm

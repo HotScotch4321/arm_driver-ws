@@ -1,0 +1,73 @@
+[0.013s] Invoking command in '/home/maxim/projects/arm_driver-ws/build/perseus_arm': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake /home/maxim/projects/arm_driver-ws/src/perseus_arm -DCMAKE_INSTALL_PREFIX=/home/maxim/projects/arm_driver-ws/install/perseus_arm
+[0.194s] -- The C compiler identification is GNU 13.3.0
+[0.498s] -- The CXX compiler identification is GNU 13.3.0
+[0.706s] -- Detecting C compiler ABI info
+[0.875s] -- Detecting C compiler ABI info - done
+[0.885s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.892s] -- Detecting C compile features
+[0.893s] -- Detecting C compile features - done
+[0.944s] -- Detecting CXX compiler ABI info
+[1.123s] -- Detecting CXX compiler ABI info - done
+[1.134s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[1.134s] -- Detecting CXX compile features
+[1.135s] -- Detecting CXX compile features - done
+[1.153s] -- Found ament_cmake: 2.5.4 (/opt/ros/jazzy/share/ament_cmake/cmake)
+[1.328s] -- Found Python3: /usr/bin/python3 (found version "3.12.3") found components: Interpreter 
+[1.479s] -- Found rclcpp: 28.1.11 (/opt/ros/jazzy/share/rclcpp/cmake)
+[1.607s] -- Found rosidl_generator_c: 4.6.6 (/opt/ros/jazzy/share/rosidl_generator_c/cmake)
+[1.629s] -- Found rosidl_generator_cpp: 4.6.6 (/opt/ros/jazzy/share/rosidl_generator_cpp/cmake)
+[1.656s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.683s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.804s] -- Found rmw_implementation_cmake: 7.3.2 (/opt/ros/jazzy/share/rmw_implementation_cmake/cmake)
+[1.809s] -- Found rmw_fastrtps_cpp: 8.4.3 (/opt/ros/jazzy/share/rmw_fastrtps_cpp/cmake)
+[1.920s] -- Found OpenSSL: /usr/lib/x86_64-linux-gnu/libcrypto.so (found version "3.0.13")  
+[1.995s] -- Found FastRTPS: /opt/ros/jazzy/include (Required is at least version "2.13") 
+[2.047s] -- Using RMW implementation 'rmw_fastrtps_cpp' as default
+[2.202s] -- Found rclcpp_lifecycle: 28.1.11 (/opt/ros/jazzy/share/rclcpp_lifecycle/cmake)
+[2.250s] -- Found sensor_msgs: 5.3.6 (/opt/ros/jazzy/share/sensor_msgs/cmake)
+[2.331s] -- Found ros2_control: 4.35.0 (/opt/ros/jazzy/share/ros2_control/cmake)
+[2.335s] -- Found ros2_controllers: 4.30.1 (/opt/ros/jazzy/share/ros2_controllers/cmake)
+[2.340s] -- Found joint_state_broadcaster: 4.30.1 (/opt/ros/jazzy/share/joint_state_broadcaster/cmake)
+[2.879s] -- Found joint_trajectory_controller: 4.30.1 (/opt/ros/jazzy/share/joint_trajectory_controller/cmake)
+[2.970s] -- Found eigen3_cmake_module: 0.3.0 (/opt/ros/jazzy/share/eigen3_cmake_module/cmake)
+[2.972s] -- Found Eigen3: TRUE (found version "3.4.0") 
+[2.972s] -- Ensuring Eigen3 include directory is part of orocos-kdl CMake target
+[3.138s] -- Found moveit_core: 2.12.3 (/opt/ros/jazzy/share/moveit_core/cmake)
+[3.189s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.83.0/BoostConfig.cmake (found version "1.83.0") found components: chrono date_time filesystem iostreams program_options regex serialization system thread 
+[3.673s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.83.0/BoostConfig.cmake (found version "1.83.0") found components: filesystem 
+[3.979s] -- Found moveit_ros_planning: 2.12.3 (/opt/ros/jazzy/share/moveit_ros_planning/cmake)
+[3.985s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.83.0/BoostConfig.cmake (found version "1.83.0") found components: system filesystem date_time program_options thread chrono 
+[4.038s] -- Found moveit_ros_planning_interface: 2.12.3 (/opt/ros/jazzy/share/moveit_ros_planning_interface/cmake)
+[4.044s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.83.0/BoostConfig.cmake (found version "1.83.0") found components: date_time filesystem program_options system thread 
+[4.066s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.83.0/BoostConfig.cmake (found version "1.83.0") found components: thread system filesystem regex date_time program_options 
+[4.099s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.83.0/BoostConfig.cmake (found version "1.83.0") found components: system filesystem date_time program_options thread 
+[4.149s] -- Found moveit_kinematics: 2.12.3 (/opt/ros/jazzy/share/moveit_kinematics/cmake)
+[4.154s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.83.0/BoostConfig.cmake (found version "1.83.0") found components: program_options system 
+[4.177s] -- Found moveit_planners: 2.12.3 (/opt/ros/jazzy/share/moveit_planners/cmake)
+[4.180s] -- Found moveit_simple_controller_manager: 2.12.3 (/opt/ros/jazzy/share/moveit_simple_controller_manager/cmake)
+[4.184s] -- Found Boost: /usr/lib/x86_64-linux-gnu/cmake/Boost-1.83.0/BoostConfig.cmake (found version "1.83.0") found components: thread 
+[4.200s] -- Found ament_lint_auto: 0.17.3 (/opt/ros/jazzy/share/ament_lint_auto/cmake)
+[4.314s] -- Configuring done (4.3s)
+[4.326s] -- Generating done (0.0s)
+[4.333s] -- Build files have been written to: /home/maxim/projects/arm_driver-ws/build/perseus_arm
+[4.350s] Invoked command in '/home/maxim/projects/arm_driver-ws/build/perseus_arm' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake /home/maxim/projects/arm_driver-ws/src/perseus_arm -DCMAKE_INSTALL_PREFIX=/home/maxim/projects/arm_driver-ws/install/perseus_arm
+[4.352s] Invoking command in '/home/maxim/projects/arm_driver-ws/build/perseus_arm': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/maxim/projects/arm_driver-ws/build/perseus_arm -- -j8 -l8
+[4.410s] Invoked command in '/home/maxim/projects/arm_driver-ws/build/perseus_arm' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --build /home/maxim/projects/arm_driver-ws/build/perseus_arm -- -j8 -l8
+[4.422s] Invoking command in '/home/maxim/projects/arm_driver-ws/build/perseus_arm': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --install /home/maxim/projects/arm_driver-ws/build/perseus_arm
+[4.433s] -- Install configuration: ""
+[4.434s] -- Installing: /home/maxim/projects/arm_driver-ws/install/perseus_arm/share/ament_index/resource_index/package_run_dependencies/perseus_arm
+[4.434s] -- Installing: /home/maxim/projects/arm_driver-ws/install/perseus_arm/share/ament_index/resource_index/parent_prefix_path/perseus_arm
+[4.435s] -- Installing: /home/maxim/projects/arm_driver-ws/install/perseus_arm/share/perseus_arm/environment/ament_prefix_path.sh
+[4.435s] -- Installing: /home/maxim/projects/arm_driver-ws/install/perseus_arm/share/perseus_arm/environment/ament_prefix_path.dsv
+[4.436s] -- Installing: /home/maxim/projects/arm_driver-ws/install/perseus_arm/share/perseus_arm/environment/path.sh
+[4.436s] -- Installing: /home/maxim/projects/arm_driver-ws/install/perseus_arm/share/perseus_arm/environment/path.dsv
+[4.436s] -- Installing: /home/maxim/projects/arm_driver-ws/install/perseus_arm/share/perseus_arm/local_setup.bash
+[4.436s] -- Installing: /home/maxim/projects/arm_driver-ws/install/perseus_arm/share/perseus_arm/local_setup.sh
+[4.437s] -- Installing: /home/maxim/projects/arm_driver-ws/install/perseus_arm/share/perseus_arm/local_setup.zsh
+[4.437s] -- Installing: /home/maxim/projects/arm_driver-ws/install/perseus_arm/share/perseus_arm/local_setup.dsv
+[4.437s] -- Installing: /home/maxim/projects/arm_driver-ws/install/perseus_arm/share/perseus_arm/package.dsv
+[4.437s] -- Installing: /home/maxim/projects/arm_driver-ws/install/perseus_arm/share/ament_index/resource_index/packages/perseus_arm
+[4.438s] -- Installing: /home/maxim/projects/arm_driver-ws/install/perseus_arm/share/perseus_arm/cmake/perseus_armConfig.cmake
+[4.438s] -- Installing: /home/maxim/projects/arm_driver-ws/install/perseus_arm/share/perseus_arm/cmake/perseus_armConfig-version.cmake
+[4.438s] -- Installing: /home/maxim/projects/arm_driver-ws/install/perseus_arm/share/perseus_arm/package.xml
+[4.441s] Invoked command in '/home/maxim/projects/arm_driver-ws/build/perseus_arm' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/jazzy /usr/bin/cmake --install /home/maxim/projects/arm_driver-ws/build/perseus_arm

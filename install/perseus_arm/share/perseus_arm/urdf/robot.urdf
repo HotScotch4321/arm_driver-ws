@@ -1,0 +1,445 @@
+<?xml version="1.0" ?>
+<!-- Generated using onshape-to-robot -->
+<!-- Onshape https://cad.onshape.com/documents/0de4613a5c9de88ea79adb1e/w/8792e248a8d8abb074fef312/e/2af6de9f4dabd1e46ce5ddd6 -->
+<robot name="my-robot-urdf">
+  <!-- Link base -->
+  <link name="base">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1e-09"/>
+      <inertia ixx="1e-09" ixy="0" ixz="0" iyy="1e-09" iyz="0" izz="1e-09"/>
+    </inertial>
+    <!-- Part base -->
+    <visual>
+      <origin xyz="0.054034 0.0421466 0.0127083" rpy="0 -0 0"/>
+      <geometry>
+        <mesh filename="package://perseus_arm/assets/base.stl"/>
+      </geometry>
+      <material name="base_material">
+        <color rgba="0.615686 0.811765 0.929412 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.054034 0.0421466 0.0127083" rpy="0 -0 0"/>
+      <geometry>
+        <mesh filename="package://perseus_arm/assets/base.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Link compound -->
+  <link name="compound">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1e-09"/>
+      <inertia ixx="1e-09" ixy="0" ixz="0" iyy="1e-09" iyz="0" izz="1e-09"/>
+    </inertial>
+    <!-- Part compound -->
+    <visual>
+      <origin xyz="0.0345 -0.005 6.93889e-18" rpy="3.14159 -5.6e-16 0"/>
+      <geometry>
+        <mesh filename="package://perseus_arm/assets/compound.stl"/>
+      </geometry>
+      <material name="compound_material">
+        <color rgba="0.0980392 0.0980392 0.0980392 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0345 -0.005 6.93889e-18" rpy="3.14159 -5.6e-16 0"/>
+      <geometry>
+        <mesh filename="package://perseus_arm/assets/compound.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Link arm_round -->
+  <link name="arm_round">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1e-09"/>
+      <inertia ixx="1e-09" ixy="0" ixz="0" iyy="1e-09" iyz="0" izz="1e-09"/>
+    </inertial>
+    <!-- Part arm_round -->
+    <visual>
+      <origin xyz="0 0 -0.003" rpy="1.5708 -0 0"/>
+      <geometry>
+        <mesh filename="package://perseus_arm/assets/arm_round.stl"/>
+      </geometry>
+      <material name="arm_round_material">
+        <color rgba="0.0980392 0.0980392 0.0980392 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 -0.003" rpy="1.5708 -0 0"/>
+      <geometry>
+        <mesh filename="package://perseus_arm/assets/arm_round.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Link shoulder -->
+  <link name="shoulder">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1e-09"/>
+      <inertia ixx="1e-09" ixy="0" ixz="0" iyy="1e-09" iyz="0" izz="1e-09"/>
+    </inertial>
+    <!-- Part shoulder -->
+    <visual>
+      <origin xyz="-6.93889e-18 0 0" rpy="3.14159 -6.77458e-33 -3.13047e-17"/>
+      <geometry>
+        <mesh filename="package://perseus_arm/assets/shoulder.stl"/>
+      </geometry>
+      <material name="shoulder_material">
+        <color rgba="0.615686 0.811765 0.929412 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-6.93889e-18 0 0" rpy="3.14159 -6.77458e-33 -3.13047e-17"/>
+      <geometry>
+        <mesh filename="package://perseus_arm/assets/shoulder.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Link compound_2 -->
+  <link name="compound_2">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1e-09"/>
+      <inertia ixx="1e-09" ixy="0" ixz="0" iyy="1e-09" iyz="0" izz="1e-09"/>
+    </inertial>
+    <!-- Part compound_2 -->
+    <visual>
+      <origin xyz="0.0345 0.005 -0.0024" rpy="4.87141e-32 5.41686e-16 4.43655e-33"/>
+      <geometry>
+        <mesh filename="package://perseus_arm/assets/compound.stl"/>
+      </geometry>
+      <material name="compound_2_material">
+        <color rgba="0.0980392 0.0980392 0.0980392 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0345 0.005 -0.0024" rpy="4.87141e-32 5.41686e-16 4.43655e-33"/>
+      <geometry>
+        <mesh filename="package://perseus_arm/assets/compound.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Link arm_round_2 -->
+  <link name="arm_round_2">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1e-09"/>
+      <inertia ixx="1e-09" ixy="0" ixz="0" iyy="1e-09" iyz="0" izz="1e-09"/>
+    </inertial>
+    <!-- Part arm_round_2 -->
+    <visual>
+      <origin xyz="-1.38778e-17 0 -0.003" rpy="1.5708 1.32224e-18 8.14935e-17"/>
+      <geometry>
+        <mesh filename="package://perseus_arm/assets/arm_round.stl"/>
+      </geometry>
+      <material name="arm_round_2_material">
+        <color rgba="0.0980392 0.0980392 0.0980392 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-1.38778e-17 0 -0.003" rpy="1.5708 1.32224e-18 8.14935e-17"/>
+      <geometry>
+        <mesh filename="package://perseus_arm/assets/arm_round.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Link upper_arm -->
+  <link name="upper_arm">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1e-09"/>
+      <inertia ixx="1e-09" ixy="0" ixz="0" iyy="1e-09" iyz="0" izz="1e-09"/>
+    </inertial>
+    <!-- Part upper_arm -->
+    <visual>
+      <origin xyz="0.0126322 0.015893 0" rpy="1.5708 -1.04909e-18 -4.63043e-17"/>
+      <geometry>
+        <mesh filename="package://perseus_arm/assets/upper_arm.stl"/>
+      </geometry>
+      <material name="upper_arm_material">
+        <color rgba="0.615686 0.811765 0.929412 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0126322 0.015893 0" rpy="1.5708 -1.04909e-18 -4.63043e-17"/>
+      <geometry>
+        <mesh filename="package://perseus_arm/assets/upper_arm.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Link arm_round_3 -->
+  <link name="arm_round_3">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1e-09"/>
+      <inertia ixx="1e-09" ixy="0" ixz="0" iyy="1e-09" iyz="0" izz="1e-09"/>
+    </inertial>
+    <!-- Part arm_round_3 -->
+    <visual>
+      <origin xyz="-4.16334e-17 0 -0.0033" rpy="-1.5708 1.75527e-18 -2.74975e-18"/>
+      <geometry>
+        <mesh filename="package://perseus_arm/assets/arm_round.stl"/>
+      </geometry>
+      <material name="arm_round_3_material">
+        <color rgba="0.0980392 0.0980392 0.0980392 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-4.16334e-17 0 -0.0033" rpy="-1.5708 1.75527e-18 -2.74975e-18"/>
+      <geometry>
+        <mesh filename="package://perseus_arm/assets/arm_round.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Link compound_3 -->
+  <link name="compound_3">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1e-09"/>
+      <inertia ixx="1e-09" ixy="0" ixz="0" iyy="1e-09" iyz="0" izz="1e-09"/>
+    </inertial>
+    <!-- Part compound_3 -->
+    <visual>
+      <origin xyz="0 0 -0.012" rpy="-6.6929e-18 -2.50789e-17 -6.47427e-17"/>
+      <geometry>
+        <mesh filename="package://perseus_arm/assets/compound.stl"/>
+      </geometry>
+      <material name="compound_3_material">
+        <color rgba="0.0980392 0.0980392 0.0980392 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 -0.012" rpy="-6.6929e-18 -2.50789e-17 -6.47427e-17"/>
+      <geometry>
+        <mesh filename="package://perseus_arm/assets/compound.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Link top_servo_plate -->
+  <link name="top_servo_plate">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1e-09"/>
+      <inertia ixx="1e-09" ixy="0" ixz="0" iyy="1e-09" iyz="0" izz="1e-09"/>
+    </inertial>
+    <!-- Part top_servo_plate -->
+    <visual>
+      <origin xyz="-0.2645 0.0275 -0.005" rpy="-1.5708 3.38358e-16 -3.14159"/>
+      <geometry>
+        <mesh filename="package://perseus_arm/assets/top_servo_plate.stl"/>
+      </geometry>
+      <material name="top_servo_plate_material">
+        <color rgba="0.615686 0.811765 0.929412 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.2645 0.0275 -0.005" rpy="-1.5708 3.38358e-16 -3.14159"/>
+      <geometry>
+        <mesh filename="package://perseus_arm/assets/top_servo_plate.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Link compound_4 -->
+  <link name="compound_4">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1e-09"/>
+      <inertia ixx="1e-09" ixy="0" ixz="0" iyy="1e-09" iyz="0" izz="1e-09"/>
+    </inertial>
+    <!-- Part compound_4 -->
+    <visual>
+      <origin xyz="-0.0145 0.005 -0.0024" rpy="3.30922e-18 5.83194e-16 -4.64134e-17"/>
+      <geometry>
+        <mesh filename="package://perseus_arm/assets/compound.stl"/>
+      </geometry>
+      <material name="compound_4_material">
+        <color rgba="0.0980392 0.0980392 0.0980392 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="-0.0145 0.005 -0.0024" rpy="3.30922e-18 5.83194e-16 -4.64134e-17"/>
+      <geometry>
+        <mesh filename="package://perseus_arm/assets/compound.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Joint from top_servo_plate to compound_4 -->
+  <joint name="fixedplate" type="fixed">
+    <origin xyz="-0.2495 -1.55431e-15 -2.35922e-16" rpy="3.14159 1.21981e-16 -3.14159"/>
+    <parent link="top_servo_plate"/>
+    <child link="compound_4"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="10"/>
+  </joint>
+  <!-- Link piece -->
+  <link name="piece">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1e-09"/>
+      <inertia ixx="1e-09" ixy="0" ixz="0" iyy="1e-09" iyz="0" izz="1e-09"/>
+    </inertial>
+    <!-- Part piece -->
+    <visual>
+      <origin xyz="0.210904 0.005 0.0201656" rpy="-1.13365e-17 1.4195e-17 1.34236e-16"/>
+      <geometry>
+        <mesh filename="package://perseus_arm/assets/piece.stl"/>
+      </geometry>
+      <material name="piece_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.210904 0.005 0.0201656" rpy="-1.13365e-17 1.4195e-17 1.34236e-16"/>
+      <geometry>
+        <mesh filename="package://perseus_arm/assets/piece.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Link bottom_servo_plate -->
+  <link name="bottom_servo_plate">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1e-09"/>
+      <inertia ixx="1e-09" ixy="0" ixz="0" iyy="1e-09" iyz="0" izz="1e-09"/>
+    </inertial>
+    <!-- Part bottom_servo_plate -->
+    <visual>
+      <origin xyz="0.0500232 -0.122817 0.005" rpy="1.5708 5.92227e-18 -3.28032e-17"/>
+      <geometry>
+        <mesh filename="package://perseus_arm/assets/bottom_servo_plate.stl"/>
+      </geometry>
+      <material name="bottom_servo_plate_material">
+        <color rgba="0.647059 0.647059 0.647059 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.0500232 -0.122817 0.005" rpy="1.5708 5.92227e-18 -3.28032e-17"/>
+      <geometry>
+        <mesh filename="package://perseus_arm/assets/bottom_servo_plate.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Joint from piece to bottom_servo_plate -->
+  <joint name="backforearm" type="fixed">
+    <origin xyz="2.77556e-17 2.77556e-17 -0.029" rpy="3.14159 -6.27391e-15 2.55944e-16"/>
+    <parent link="piece"/>
+    <child link="bottom_servo_plate"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="10"/>
+  </joint>
+  <!-- Joint from top_servo_plate to piece -->
+  <joint name="piece1" type="fixed">
+    <origin xyz="-0.10975 -0.0114012 0.001" rpy="3.14159 4.65819e-17 -3.14159"/>
+    <parent link="top_servo_plate"/>
+    <child link="piece"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="10"/>
+  </joint>
+  <!-- Link piece_2 -->
+  <link name="piece_2">
+    <inertial>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <mass value="1e-09"/>
+      <inertia ixx="1e-09" ixy="0" ixz="0" iyy="1e-09" iyz="0" izz="1e-09"/>
+    </inertial>
+    <!-- Part piece_2 -->
+    <visual>
+      <origin xyz="0.210904 0.005 0.0201656" rpy="5.22145e-18 -2.99917e-17 4.66215e-18"/>
+      <geometry>
+        <mesh filename="package://perseus_arm/assets/piece.stl"/>
+      </geometry>
+      <material name="piece_2_material">
+        <color rgba="0.231373 0.380392 0.705882 1"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0.210904 0.005 0.0201656" rpy="5.22145e-18 -2.99917e-17 4.66215e-18"/>
+      <geometry>
+        <mesh filename="package://perseus_arm/assets/piece.stl"/>
+      </geometry>
+    </collision>
+  </link>
+  <!-- Joint from top_servo_plate to piece_2 -->
+  <joint name="piece2" type="fixed">
+    <origin xyz="-0.10975 0.0164 0.001" rpy="3.14159 8.53813e-17 3.14159"/>
+    <parent link="top_servo_plate"/>
+    <child link="piece_2"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="10"/>
+  </joint>
+  <!-- Joint from compound_3 to top_servo_plate -->
+  <joint name="fixedforearm" type="fixed">
+    <origin xyz="0.0145 0.005 -0.0096" rpy="3.14159 -6.0477e-16 -6.47427e-17"/>
+    <parent link="compound_3"/>
+    <child link="top_servo_plate"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="10"/>
+  </joint>
+  <!-- Joint from arm_round_3 to compound_3 -->
+  <joint name="elbow" type="revolute">
+    <origin xyz="-1.38778e-16 1.38778e-16 -0.0063" rpy="-1.25602e-15 -7.4877e-15 -2.85351"/>
+    <parent link="arm_round_3"/>
+    <child link="compound_3"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="10" lower="-3.141592653589793" upper="3.141592653589793"/>
+  </joint>
+  <!-- Joint from upper_arm to arm_round_3 -->
+  <joint name="fixedelbowservo" type="fixed">
+    <origin xyz="-0.0999979 -5.59052e-05 3.46945e-17" rpy="-3.14159 1.01027e-15 1.5708"/>
+    <parent link="upper_arm"/>
+    <child link="arm_round_3"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="10"/>
+  </joint>
+  <!-- Joint from arm_round_2 to upper_arm -->
+  <joint name="fixedarm" type="fixed">
+    <origin xyz="-8.32667e-17 -2.08167e-17 -0.0063" rpy="-5.97175e-17 -6.67336e-16 -1.5708"/>
+    <parent link="arm_round_2"/>
+    <child link="upper_arm"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="10"/>
+  </joint>
+  <!-- Joint from compound_2 to arm_round_2 -->
+  <joint name="shoulder" type="revolute">
+    <origin xyz="0.0345 0.005 0.0096" rpy="-3.14159 -8.57676e-16 -0.825352"/>
+    <parent link="compound_2"/>
+    <child link="arm_round_2"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="10" lower="-3.141592653589793" upper="3.141592653589793"/>
+  </joint>
+  <!-- Joint from shoulder to compound_2 -->
+  <joint name="baserotate" type="fixed">
+    <origin xyz="0.0175 0.0345 -0.0449697" rpy="1.5708 -9.2829e-25 -1.5708"/>
+    <parent link="shoulder"/>
+    <child link="compound_2"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="10"/>
+  </joint>
+  <!-- Joint from arm_round to shoulder -->
+  <joint name="base" type="revolute">
+    <origin xyz="3.08781e-15 -1.9984e-15 -0.0063" rpy="-1.70692e-16 -3.30003e-17 0.223241"/>
+    <parent link="arm_round"/>
+    <child link="shoulder"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="10" lower="-3.141592653589793" upper="3.141592653589793"/>
+  </joint>
+  <!-- Joint from compound to arm_round -->
+  <joint name="fixedservo_base" type="fixed">
+    <origin xyz="0.0345 -0.005 -0.012" rpy="6.16936e-16 -0 -1.5708"/>
+    <parent link="compound"/>
+    <child link="arm_round"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="10"/>
+  </joint>
+  <!-- Joint from base to compound -->
+  <joint name="fixedbase" type="fixed">
+    <origin xyz="0.049034 0.0666466 0.0377083" rpy="3.14159 -0 -1.5708"/>
+    <parent link="base"/>
+    <child link="compound"/>
+    <axis xyz="0 0 1"/>
+    <limit effort="10" velocity="10"/>
+  </joint>
+</robot>
