@@ -1,0 +1,15 @@
+# Build artifacts
+build/
+cmake-build-*/
+dist/
+*.o
+*.so
+*.a
+
+# Install outputs
+install/
+out/
+
+# Logs
+*.log
+log/

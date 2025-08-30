@@ -1,9 +1,0 @@
-/home/maxim/projects/arm_driver-ws/build/perseus_arm/CMakeFiles/uninstall.dir
-/home/maxim/projects/arm_driver-ws/build/perseus_arm/CMakeFiles/perseus_arm_uninstall.dir
-/home/maxim/projects/arm_driver-ws/build/perseus_arm/CMakeFiles/test.dir
-/home/maxim/projects/arm_driver-ws/build/perseus_arm/CMakeFiles/edit_cache.dir
-/home/maxim/projects/arm_driver-ws/build/perseus_arm/CMakeFiles/rebuild_cache.dir
-/home/maxim/projects/arm_driver-ws/build/perseus_arm/CMakeFiles/list_install_components.dir
-/home/maxim/projects/arm_driver-ws/build/perseus_arm/CMakeFiles/install.dir
-/home/maxim/projects/arm_driver-ws/build/perseus_arm/CMakeFiles/install/local.dir
-/home/maxim/projects/arm_driver-ws/build/perseus_arm/CMakeFiles/install/strip.dir
