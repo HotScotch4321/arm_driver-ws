@@ -1,8 +1,0 @@
-source;share/perseus_arm/hook/cmake_prefix_path.ps1
-source;share/perseus_arm/hook/cmake_prefix_path.dsv
-source;share/perseus_arm/hook/cmake_prefix_path.sh
-source;share/perseus_arm/local_setup.bash
-source;share/perseus_arm/local_setup.dsv
-source;share/perseus_arm/local_setup.ps1
-source;share/perseus_arm/local_setup.sh
-source;share/perseus_arm/local_setup.zsh

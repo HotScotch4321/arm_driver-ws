@@ -1,0 +1,7 @@
+<library path="perseus_arm">
+  <class name="perseus_arm/mg996Rdriver" 
+         type="perseus_arm::mg996Rdriver" 
+         base_class_type="hardware_interface::SystemInterface">
+    <description>MG996R servo driver for Perseus arm</description>
+  </class>
+</library>

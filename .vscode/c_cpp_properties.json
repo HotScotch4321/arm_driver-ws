@@ -7,7 +7,10 @@
                 "/opt/ros/jazzy/include/**",
                 "${workspaceFolder}/install/*/include/**",
                 "${workspaceFolder}/build/*/include/**",
-                "/usr/include/**"
+                "/usr/include/**",
+                "/opt/ros/jazzy/include/hardware_interface",
+                "${workspaceFolder}/src/perseus_arm",
+                "/opt/ros/jazzy/include/moveit_ros_planning_interface"
             ],
             "defines": [],
             "compilerPath": "/usr/bin/gcc",
@@ -15,7 +18,9 @@
             "cppStandard": "gnu++17",
             "intelliSenseMode": "linux-gcc-x64",
             "configurationProvider": "ms-vscode.cmake-tools",
-            "compileCommands": "${workspaceFolder}/build/compile_commands.json"
+            "compileCommands": [
+                "${workspaceFolder}/build/compile_commands.json"
+            ]
         }
     ],
     "version": 4

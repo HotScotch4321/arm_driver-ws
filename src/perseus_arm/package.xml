@@ -17,10 +17,6 @@
   <depend>hardware_interface</depend>
   <depend>pluginlib</depend>
 
-  <!-- Pigpio for servo control -->
-  <depend>libpigpiod-if2-dev</depend>
-  <exec_depend>pigpio</exec_depend>
-
   <!-- Runtime dependencies for ros2_control (loaded by launch files) -->
   <exec_depend>controller_manager</exec_depend>
   <exec_depend>joint_state_broadcaster</exec_depend>
@@ -30,5 +26,7 @@
 
   <export>
     <build_type>ament_cmake</build_type>
+    <hardware_interface plugin="${prefix}/perseus_arm_plugin.xml"/>
   </export>
+  
 </package>

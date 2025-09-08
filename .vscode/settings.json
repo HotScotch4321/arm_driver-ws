@@ -1,3 +1,7 @@
 {
-    "cmake.sourceDirectory": "/home/maxim/projects/arm_driver-ws/src/perseus_arm"
+    "cmake.sourceDirectory": "/home/maxim/projects/arm_driver-ws/src/perseus_arm",
+    "files.associations": {
+        "vector": "cpp",
+        "cmath": "cpp"
+    }
 }

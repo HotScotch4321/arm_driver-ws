@@ -1,6 +1,0 @@
-# Default initial positions for my-robot-urdf's ros2_control fake system
-
-initial_positions:
-  base: 0
-  elbow: 0
-  shoulder: 0
