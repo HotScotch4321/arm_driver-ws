@@ -21,23 +21,23 @@ servo_node:
     incoming_command_timeout: 1.0
     num_outgoing_halt_msgs_to_publish: 4
     
-    # Velocity scaling for MG996R servos (conservative for safety)
-    linear_velocity_scaling: 0.5     # Slow Cartesian movement
-    rotational_velocity_scaling: 0.5  # Slow rotation
-    joint_velocity_scaling: 0.5       # Slow joint movement
+    # Velocity scaling for MG996R servos
+    linear_velocity_scaling: 0.5     
+    rotational_velocity_scaling: 0.5 
+    joint_velocity_scaling: 0.5       
 
-    # Safety limits (important for open-loop servos)
+    # Safety limits 
     lower_singularity_threshold: 0.05
     hard_stop_singularity_threshold: 0.02
     leaving_singularity_threshold_multiplier: 2.0
     
-    # Collision checking (software-based since no force feedback)
+    # Collision checking 
     check_collisions: true
     collision_check_rate: 10.0
     self_collision_proximity_threshold: 0.01
     scene_collision_proximity_threshold: 0.02
     
-    # Smoothing (helps with discrete servo positions)
+    # Smoothing 
     use_smoothing: true
     smoothing_filter_plugin_name: "online_signal_smoothing::ButterworthFilterPlugin"
     
