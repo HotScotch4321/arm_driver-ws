@@ -12,6 +12,12 @@ find_package(rclcpp_lifecycle REQUIRED)
 find_package(hardware_interface REQUIRED)
 find_package(pluginlib REQUIRED)
 
+# Find pigpio library
+find_library(PIGPIO_LIB pigpiod_if2 REQUIRED)
+if(NOT PIGPIO_LIB)
+  message(FATAL_ERROR "pigpiod_if2 library not found")
+endif()
+
 # Build hardware interface library
 add_library(${PROJECT_NAME} SHARED src/arm_driver.cpp)
 
@@ -20,6 +26,9 @@ target_include_directories(${PROJECT_NAME} PUBLIC
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>
   $<INSTALL_INTERFACE:include>
 )
+
+# Link pigpio library
+target_link_libraries(${PROJECT_NAME} ${PIGPIO_LIB})
 
 ament_target_dependencies(${PROJECT_NAME}
   hardware_interface
