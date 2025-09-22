@@ -17,9 +17,9 @@ namespace perseus_arm {
     // Sets up the configuration for each joint (name, pin, angle limits, pulse width range)
     void mg996Rdriver::setupjointconfig() {
         joint_configs_ = {
-            {"base", 12, -M_PI_2, M_PI_2, 1000, 2000},      
-            {"shoulder", 13, -M_PI_2, M_PI_2, 1000, 2000},  
-            {"elbow", 14, -M_PI_2, M_PI_2, 1000, 2000}      
+            {"base", 12, -M_PI_2, M_PI_2, 500, 2500},      
+            {"shoulder", 13, -M_PI_2, M_PI_2, 500, 2500},  
+            {"elbow", 14, -M_PI_2, M_PI_2, 500, 2500}      
         };
     }
 
