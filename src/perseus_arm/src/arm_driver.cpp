@@ -178,13 +178,17 @@ namespace perseus_arm {
     // Clamps the command to the joint limits, converts to pulse width, and sends to each servo.
     hardware_interface::return_type mg996Rdriver::write(
         const rclcpp::Time & time, const rclcpp::Duration & period) {
+            
+            RCLCPP_INFO(rclcpp::get_logger("mg996Rdriver"), "Write called with positions:");
+            
             for (size_t i = 0; i < joint_configs_.size(); ++i) {
                 const auto& joint = joint_configs_[i];
-
-                // Clamp position command to joint limits
                 double clamped_position = std::clamp(position_commands_[i], joint.min_angle, joint.max_angle);
                 
-                // Convert angle to pulse width using the joint config
+                RCLCPP_INFO(rclcpp::get_logger("mg996Rdriver"), 
+                    "Joint %s: cmd=%.3f, clamped=%.3f", 
+                    joint.name.c_str(), position_commands_[i], clamped_position);
+                    
                 int pulse_width = angleToPulseWidth(clamped_position, joint);
                 sendPulseWidth(joint.pin, pulse_width);
             }

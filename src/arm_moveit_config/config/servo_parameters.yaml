@@ -1,52 +1,62 @@
 servo_node:
   ros__parameters:
     # Robot configuration
-    move_group_name: "arm"
-    planning_frame: "base"
-    ee_frame_name: "compound_3"  
+    move_group_name: "arm"                    # Must match your SRDF group name
+    planning_frame: "base"                    # Base frame from your URDF  
+    ee_frame_name: "compound_3"               # End-effector frame from your URDF
     
-    # Input/Output topics
+    # Command topics
     cartesian_command_in_topic: "/servo_node/delta_twist_cmds"
     joint_command_in_topic: "/servo_node/delta_joint_cmds"
+    pose_command_in_topic: "/servo_node/pose_target_cmds"
+    
+    # Output to joint trajectory controller
     command_out_topic: "/arm_controller/joint_trajectory"
     command_out_type: "trajectory_msgs/JointTrajectory"
     
-    # Publishing options
+    # Publishing parameters (Jazzy format)
+    publish_period: 0.01                      # 100Hz - good for servos
+    max_expected_latency: 0.1                 # Max latency tolerance
+    
+    # Publishing control
     publish_joint_positions: true
     publish_joint_velocities: true
     publish_joint_accelerations: false
     
-    # Control parameters
-    publish_period: 0.01  # 100Hz control loop
-    incoming_command_timeout: 1.0
-    num_outgoing_halt_msgs_to_publish: 4
+    # MG996R servo velocity scaling (conservative)
+    linear_velocity_scaling: 0.4              # Reasonable for servos
+    rotational_velocity_scaling: 0.4          # Reasonable rotation speed
+    joint_velocity_scaling: 0.4               # Conservative for MG996R
     
-    # Velocity scaling for MG996R servos
-    linear_velocity_scaling: 0.5     
-    rotational_velocity_scaling: 0.5 
-    joint_velocity_scaling: 0.5       
-
-    # Safety limits 
+    # Singularity handling
     lower_singularity_threshold: 0.05
     hard_stop_singularity_threshold: 0.02
     leaving_singularity_threshold_multiplier: 2.0
     
-    # Collision checking 
+    # Collision checking
     check_collisions: true
     collision_check_rate: 10.0
     self_collision_proximity_threshold: 0.01
     scene_collision_proximity_threshold: 0.02
     
-    # Smoothing 
+    # Smoothing (critical for servos) 
     use_smoothing: true
     smoothing_filter_plugin_name: "online_signal_smoothing::ButterworthFilterPlugin"
     
-    # Joint limits enforcement
+    # Joint limits
     enforce_joint_limits: true
     
-    # Monitor joint states
+    # Status monitoring
     joint_topic: "/joint_states"
+    status_topic: "/servo_node/status"
     
     # Planning scene
-    monitored_planning_scene_topic: "/planning_scene"
-    is_primary_planning_scene_monitor: true
+    monitored_planning_scene_topic: "/monitored_planning_scene"
+    is_primary_planning_scene_monitor: false
+    
+    # Command handling
+    incoming_command_timeout: 1.0
+    num_outgoing_halt_msgs_to_publish: 4
+    
+    # Thread priority (new in Jazzy)
+    thread_priority: 40
