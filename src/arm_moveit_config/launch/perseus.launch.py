@@ -18,12 +18,17 @@ def load_yaml(package_name, file_path):
         return None
 
 def generate_launch_description():
-    # Build MoveIt configuration for Perseus Arm
-    moveit_config = MoveItConfigsBuilder("my-robot-urdf", package_name="arm_moveit_config").to_moveit_configs()
+    # Build MoveIt configuration with OMPL planning pipeline
+    moveit_config = (
+        MoveItConfigsBuilder("my-robot-urdf", package_name="arm_moveit_config")
+        .planning_pipelines(pipelines=["ompl"], default_planning_pipeline="ompl")
+        .to_moveit_configs()
+    )
     
-    # Load servo parameters correctly
-    servo_yaml = load_yaml("arm_moveit_config", "config/servo_parameters.yaml")
-    servo_params = servo_yaml
+    # Load servo parameters
+    servo_params = {
+        "moveit_servo": load_yaml("arm_moveit_config", "config/servo_parameters.yaml")
+    }
     
     # Robot description
     robot_description = moveit_config.robot_description
@@ -35,6 +40,21 @@ def generate_launch_description():
         "publish_state_updates": True,
         "publish_transforms_updates": True,
     }
+
+    # Start the actual move_group node/action server
+    move_group_node = Node(
+        package="moveit_ros_move_group",
+        executable="move_group",
+        output="screen",
+        parameters=[
+            robot_description,
+            moveit_config.robot_description_semantic,
+            moveit_config.robot_description_kinematics,
+            moveit_config.planning_pipelines,  # This provides OMPL configuration
+            planning_scene_monitor_parameters,
+            servo_params,
+        ],
+    )
 
     # Servo node for real-time control
     servo_node = ComposableNode(
@@ -49,7 +69,7 @@ def generate_launch_description():
         extra_arguments=[{"use_intra_process_comms": True}],
     )
 
-    # Controller manager 
+    # Controller manager
     controller_manager_node = Node(
         package="controller_manager", 
         executable="ros2_control_node",
@@ -100,5 +120,6 @@ def generate_launch_description():
         controller_manager_node, 
         joint_state_broadcaster,
         arm_controller,
+        move_group_node,
         container,
     ])
