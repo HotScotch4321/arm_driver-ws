@@ -1,11 +1,11 @@
-servo_node:
+servo:
   ros__parameters:
     # Robot configuration
-    move_group_name: "arm"                    # Must match your SRDF group name
-    planning_frame: "base"                    # Base frame from your URDF  
-    ee_frame_name: "compound_3"               # End-effector frame from your URDF
+    move_group_name: "arm"
+    planning_frame: "base"
+    ee_frame_name: "compound_3"
     
-    # Command topics
+    # Command topics  
     cartesian_command_in_topic: "/servo_node/delta_twist_cmds"
     joint_command_in_topic: "/servo_node/delta_joint_cmds"
     pose_command_in_topic: "/servo_node/pose_target_cmds"
@@ -14,19 +14,19 @@ servo_node:
     command_out_topic: "/arm_controller/joint_trajectory"
     command_out_type: "trajectory_msgs/JointTrajectory"
     
-    # Publishing parameters 
-    publish_period: 0.01                      # 100Hz - good for servos
-    max_expected_latency: 0.1                 # Max latency tolerance
+    # Publishing parameters
+    publish_period: 0.01
+    max_expected_latency: 0.1
     
     # Publishing control
     publish_joint_positions: true
     publish_joint_velocities: true
     publish_joint_accelerations: false
     
-    # MG996R servo velocity scaling 
-    linear_velocity_scaling: 0.4              # Reasonable for servos
-    rotational_velocity_scaling: 0.4          # Reasonable rotation speed
-    joint_velocity_scaling: 0.4               # Conservative for MG996R
+    # Velocity scaling for MG996R servos
+    linear_velocity_scaling: 0.4
+    rotational_velocity_scaling: 0.4
+    joint_velocity_scaling: 0.4
     
     # Singularity handling
     lower_singularity_threshold: 0.05
@@ -39,7 +39,7 @@ servo_node:
     self_collision_proximity_threshold: 0.01
     scene_collision_proximity_threshold: 0.02
     
-    # Smoothing 
+    # Smoothing
     use_smoothing: true
     smoothing_filter_plugin_name: "online_signal_smoothing::ButterworthFilterPlugin"
     
@@ -58,5 +58,5 @@ servo_node:
     incoming_command_timeout: 1.0
     num_outgoing_halt_msgs_to_publish: 4
     
-    # Thread priority 
+    # Thread priority
     thread_priority: 40

@@ -25,11 +25,10 @@ def generate_launch_description():
         .to_moveit_configs()
     )
     
-    # Load servo parameters
-    servo_params = {
-        "moveit_servo": load_yaml("arm_moveit_config", "config/servo_parameters.yaml")
-    }
-    
+    # Load servo parameters correctly
+    servo_yaml = load_yaml("arm_moveit_config", "config/servo_parameters.yaml")
+    servo_params = servo_yaml.get("servo", {}).get("ros__parameters", {})
+                                                        
     # Robot description
     robot_description = moveit_config.robot_description
     
@@ -50,9 +49,8 @@ def generate_launch_description():
             robot_description,
             moveit_config.robot_description_semantic,
             moveit_config.robot_description_kinematics,
-            moveit_config.planning_pipelines,  # This provides OMPL configuration
+            moveit_config.planning_pipelines,
             planning_scene_monitor_parameters,
-            servo_params,
         ],
     )
 
@@ -62,7 +60,7 @@ def generate_launch_description():
         plugin="moveit_servo::ServoNode",
         name="servo_node",
         parameters=[
-            servo_params,
+            servo_yaml,  # Full structure with 'servo:' namespace
             robot_description,
             moveit_config.robot_description_semantic,
         ],
