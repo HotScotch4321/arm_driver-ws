@@ -23,12 +23,12 @@ def generate_launch_description():
         .to_moveit_configs()
     )
     
-    # Load servo parameters - NO NAMESPACE CONVERSION
+    # Load servo parameters and convert namespace - THIS WAS CORRECT!
     servo_yaml = load_yaml("arm_moveit_config", "config/servo_parameters.yaml")
-    servo_params = servo_yaml["servo"]["ros__parameters"]
+    servo_config = servo_yaml["servo"]["ros__parameters"]
     
-    # Planning group parameter
-    planning_group_params = {"move_group_name": "arm"}
+    # Create servo parameters with moveit_servo namespace
+    servo_params = {f"moveit_servo.{k}": v for k, v in servo_config.items()}
     
     nodes = [
         # Robot state publisher
@@ -68,17 +68,16 @@ def generate_launch_description():
             output="screen",
         ),
         
-     
+        
         Node(
             package="moveit_servo",
             executable="servo_node",
             parameters=[
-                servo_params,                                
-                planning_group_params,                       
-                moveit_config.robot_description,             
-                moveit_config.robot_description_semantic,    
-                moveit_config.robot_description_kinematics,  
-                moveit_config.joint_limits,                  
+                servo_params,  
+                moveit_config.robot_description,
+                moveit_config.robot_description_semantic,
+                moveit_config.robot_description_kinematics,
+                moveit_config.joint_limits,
             ],
             output="screen",
         ),
