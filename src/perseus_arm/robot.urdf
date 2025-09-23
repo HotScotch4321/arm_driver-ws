@@ -384,7 +384,7 @@
     <parent link="arm_round_3"/>
     <child link="compound_3"/>
     <axis xyz="0 0 1"/>
-    <limit effort="10" velocity="10" lower="-3.141592653589793" upper="3.141592653589793"/>
+    <limit effort="10" velocity="10" lower="-1.570796" upper="1.570796"/>
   </joint>
   <!-- Joint from upper_arm to arm_round_3 -->
   <joint name="fixedelbowservo" type="fixed">
@@ -408,7 +408,7 @@
     <parent link="compound_2"/>
     <child link="arm_round_2"/>
     <axis xyz="0 0 1"/>
-    <limit effort="10" velocity="10" lower="-3.141592653589793" upper="3.141592653589793"/>
+    <limit effort="10" velocity="10" lower="-1.570796" upper="1.570796"/>
   </joint>
   <!-- Joint from shoulder to compound_2 -->
   <joint name="baserotate" type="fixed">
@@ -424,7 +424,7 @@
     <parent link="arm_round"/>
     <child link="shoulder"/>
     <axis xyz="0 0 1"/>
-    <limit effort="10" velocity="10" lower="-3.141592653589793" upper="3.141592653589793"/>
+    <limit effort="10" velocity="10" lower="-1.570796" upper="1.570796"/>
   </joint>
   <!-- Joint from compound to arm_round -->
   <joint name="fixedservo_base" type="fixed">

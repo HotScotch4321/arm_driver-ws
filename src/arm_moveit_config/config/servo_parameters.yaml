@@ -29,8 +29,8 @@ servo:
     joint_velocity_scaling: 0.4
     
     # Singularity handling
-    lower_singularity_threshold: 0.05
-    hard_stop_singularity_threshold: 0.02
+    lower_singularity_threshold: 0.02
+    hard_stop_singularity_threshold: 0.05
     leaving_singularity_threshold_multiplier: 2.0
     
     # Collision checking
