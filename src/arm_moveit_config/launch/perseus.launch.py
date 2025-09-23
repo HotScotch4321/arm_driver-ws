@@ -74,7 +74,12 @@ def generate_launch_description():
         Node(
             package="moveit_servo",
             executable="servo_node",
-            parameters=[servo_params],  # Contains robot_description + moveit_servo.* params
+            parameters=[
+                servo_params,
+                moveit_config.robot_description,
+                moveit_config.robot_description_semantic,  
+                moveit_config.robot_description_kinematics,
+            ],  
             output="screen",
         ),
     ]
