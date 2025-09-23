@@ -167,32 +167,38 @@ namespace perseus_arm {
     // Reads the current state from the hardware.
     hardware_interface::return_type mg996Rdriver::read(
         const rclcpp::Time & time, const rclcpp::Duration & period) {
-          
-            for (size_t i = 0; i < joint_configs_.size(); ++i) {
+        
+        for (size_t i = 0; i < joint_configs_.size(); ++i) {
+            // Validate position before publishing
+            if (std::isfinite(position_commands_[i])) {
                 position_states_[i] = position_commands_[i];
+            } else {
+                position_states_[i] = 0.0;  
             }
-            return hardware_interface::return_type::OK;
         }
+        return hardware_interface::return_type::OK;
+    }
     
     // Writes the current position commands to the hardware.
     // Clamps the command to the joint limits, converts to pulse width, and sends to each servo.
     hardware_interface::return_type mg996Rdriver::write(
         const rclcpp::Time & time, const rclcpp::Duration & period) {
+        
+        RCLCPP_INFO(rclcpp::get_logger("mg996Rdriver"), 
+            "WRITE CALLED - Base: %.3f, Shoulder: %.3f, Elbow: %.3f", 
+            position_commands_[0], position_commands_[1], position_commands_[2]);
+        
+        for (size_t i = 0; i < joint_configs_.size(); ++i) {
+            const auto& joint = joint_configs_[i];
+            double clamped_position = std::clamp(position_commands_[i], joint.min_angle, joint.max_angle);
+            int pulse_width = angleToPulseWidth(clamped_position, joint);
             
-            //RCLCPP_INFO(rclcpp::get_logger("mg996Rdriver"), "Write called with positions:");
-            
-            for (size_t i = 0; i < joint_configs_.size(); ++i) {
-                const auto& joint = joint_configs_[i];
-                double clamped_position = std::clamp(position_commands_[i], joint.min_angle, joint.max_angle);
+            RCLCPP_INFO(rclcpp::get_logger("mg996Rdriver"), 
+                "Joint %s: cmd=%.3f → pw=%d", joint.name.c_str(), clamped_position, pulse_width);
                 
-                //RCLCPP_INFO(rclcpp::get_logger("mg996Rdriver"), 
-                //    "Joint %s: cmd=%.3f, clamped=%.3f", 
-                //    joint.name.c_str(), position_commands_[i], clamped_position);
-                    
-                int pulse_width = angleToPulseWidth(clamped_position, joint);
-                sendPulseWidth(joint.pin, pulse_width);
-            }
-            return hardware_interface::return_type::OK;
+            sendPulseWidth(joint.pin, pulse_width);
+        }
+        return hardware_interface::return_type::OK;
     }
 
 } 
