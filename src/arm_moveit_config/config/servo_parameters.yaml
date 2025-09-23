@@ -35,7 +35,7 @@ servo:
     leaving_singularity_threshold_multiplier: 2.0
     
     
-    check_collisions: true
+    check_collisions: false
     collision_check_rate: 10.0
     self_collision_proximity_threshold: 0.01
     scene_collision_proximity_threshold: 0.02
@@ -56,7 +56,7 @@ servo:
     is_primary_planning_scene_monitor: false
     
     # Command handling
-    incoming_command_timeout: 2.0  
+    incoming_command_timeout: 4.0  
     num_outgoing_halt_msgs_to_publish: 4
     
     # Thread priority
