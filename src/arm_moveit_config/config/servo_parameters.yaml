@@ -18,8 +18,8 @@ servo:
     command_out_type: "trajectory_msgs/JointTrajectory"
     
     # Publishing parameters
-    publish_period: 0.02  
-    max_expected_latency: 0.21  
+    publish_period: 0.1
+    max_expected_latency: 0.5
     # Publishing control
     publish_joint_positions: true
     publish_joint_velocities: false  
