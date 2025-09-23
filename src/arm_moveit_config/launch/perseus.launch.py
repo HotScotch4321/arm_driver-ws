@@ -23,19 +23,22 @@ def generate_launch_description():
         .to_moveit_configs()
     )
     
-    # Load servo parameters with proper namespace handling
+    # Load servo parameters and convert namespace
     servo_yaml = load_yaml("arm_moveit_config", "config/servo_parameters.yaml")
-    # Convert servo: {...} to moveit_servo: {...} format that node expects
-    servo_params = {"moveit_servo": servo_yaml["servo"]["ros__parameters"]}
+    servo_config = servo_yaml["servo"]["ros__parameters"]
     
-    robot_description = moveit_config.robot_description
+    # Combine robot description with servo params in single dict
+    servo_params = {
+        "robot_description": moveit_config.robot_description["robot_description"],
+        **{f"moveit_servo.{k}": v for k, v in servo_config.items()}
+    }
     
     nodes = [
         # Robot state publisher
         Node(
             package="robot_state_publisher",
             executable="robot_state_publisher",
-            parameters=[robot_description],
+            parameters=[moveit_config.robot_description],
             output="screen",
         ),
         
@@ -44,7 +47,7 @@ def generate_launch_description():
             package="controller_manager", 
             executable="ros2_control_node",
             parameters=[
-                robot_description,
+                moveit_config.robot_description,
                 os.path.join(get_package_share_directory("arm_moveit_config"), "config", "ros2_controllers.yaml"),
             ],
             output="screen",
@@ -59,7 +62,7 @@ def generate_launch_description():
             package="moveit_ros_move_group",
             executable="move_group",
             parameters=[
-                robot_description,
+                moveit_config.robot_description,
                 moveit_config.robot_description_semantic,
                 moveit_config.robot_description_kinematics,
                 moveit_config.planning_pipelines,
@@ -67,16 +70,11 @@ def generate_launch_description():
             output="screen",
         ),
         
-        # Servo node with proper parameter loading
+        # Servo node - single instance with all required params
         Node(
             package="moveit_servo",
             executable="servo_node",
-            parameters=[
-                servo_params,  # Contains moveit_servo namespace
-                robot_description,
-                moveit_config.robot_description_semantic,
-                moveit_config.robot_description_kinematics,
-            ],
+            parameters=[servo_params],  # Contains robot_description + moveit_servo.* params
             output="screen",
         ),
     ]
