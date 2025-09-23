@@ -23,15 +23,12 @@ def generate_launch_description():
         .to_moveit_configs()
     )
     
-    # Load servo parameters and convert namespace
+    # Load servo parameters - NO NAMESPACE CONVERSION
     servo_yaml = load_yaml("arm_moveit_config", "config/servo_parameters.yaml")
-    servo_config = servo_yaml["servo"]["ros__parameters"]
+    servo_params = servo_yaml["servo"]["ros__parameters"]
     
-    # Combine robot description with servo params in single dict
-    servo_params = {
-        "robot_description": moveit_config.robot_description["robot_description"],
-        **{f"moveit_servo.{k}": v for k, v in servo_config.items()}
-    }
+    # Planning group parameter
+    planning_group_params = {"move_group_name": "arm"}
     
     nodes = [
         # Robot state publisher
@@ -66,20 +63,23 @@ def generate_launch_description():
                 moveit_config.robot_description_semantic,
                 moveit_config.robot_description_kinematics,
                 moveit_config.planning_pipelines,
+                moveit_config.joint_limits,
             ],
             output="screen",
         ),
         
-        # Servo node - single instance with all required params
+     
         Node(
             package="moveit_servo",
             executable="servo_node",
             parameters=[
-                servo_params,
-                moveit_config.robot_description,
-                moveit_config.robot_description_semantic,  
-                moveit_config.robot_description_kinematics,
-            ],  
+                servo_params,                                
+                planning_group_params,                       
+                moveit_config.robot_description,             
+                moveit_config.robot_description_semantic,    
+                moveit_config.robot_description_kinematics,  
+                moveit_config.joint_limits,                  
+            ],
             output="screen",
         ),
     ]
