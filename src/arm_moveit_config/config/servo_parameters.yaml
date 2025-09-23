@@ -1,5 +1,8 @@
 servo:
   ros__parameters:
+    start_servo: true
+    default_command_type: 1
+
     # Robot configuration
     move_group_name: "arm"
     planning_frame: "base"

@@ -184,18 +184,11 @@ namespace perseus_arm {
     hardware_interface::return_type mg996Rdriver::write(
         const rclcpp::Time & time, const rclcpp::Duration & period) {
         
-        RCLCPP_INFO(rclcpp::get_logger("mg996Rdriver"), 
-            "WRITE CALLED - Base: %.3f, Shoulder: %.3f, Elbow: %.3f", 
-            position_commands_[0], position_commands_[1], position_commands_[2]);
-        
         for (size_t i = 0; i < joint_configs_.size(); ++i) {
             const auto& joint = joint_configs_[i];
             double clamped_position = std::clamp(position_commands_[i], joint.min_angle, joint.max_angle);
             int pulse_width = angleToPulseWidth(clamped_position, joint);
-            
-            RCLCPP_INFO(rclcpp::get_logger("mg996Rdriver"), 
-                "Joint %s: cmd=%.3f → pw=%d", joint.name.c_str(), clamped_position, pulse_width);
-                
+   
             sendPulseWidth(joint.pin, pulse_width);
         }
         return hardware_interface::return_type::OK;
