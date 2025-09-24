@@ -23,12 +23,9 @@ def generate_launch_description():
         .to_moveit_configs()
     )
     
-    # Load servo parameters and convert namespace - THIS WAS CORRECT!
+    # Load servo parameters - NO PREFIX ADDED
     servo_yaml = load_yaml("arm_moveit_config", "config/servo_parameters.yaml")
-    servo_config = servo_yaml["servo"]["ros__parameters"]
-    
-    # Create servo parameters with moveit_servo namespace
-    servo_params = {f"moveit_servo.{k}": v for k, v in servo_config.items()}
+    servo_params = servo_yaml["servo"]["ros__parameters"] 
     
     nodes = [
         # Robot state publisher
@@ -68,12 +65,12 @@ def generate_launch_description():
             output="screen",
         ),
         
-        
+        # Servo node - parameters loaded directly
         Node(
             package="moveit_servo",
             executable="servo_node",
             parameters=[
-                servo_params,  
+                servo_params,  # No moveit_servo prefix
                 moveit_config.robot_description,
                 moveit_config.robot_description_semantic,
                 moveit_config.robot_description_kinematics,
