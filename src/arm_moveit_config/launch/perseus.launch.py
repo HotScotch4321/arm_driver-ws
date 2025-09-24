@@ -1,20 +1,11 @@
 #!/usr/bin/env python3
 
 import os
-import yaml
 from launch import LaunchDescription
 from launch_ros.actions import Node
 from ament_index_python.packages import get_package_share_directory
 from moveit_configs_utils import MoveItConfigsBuilder
-
-def load_yaml(package_name, file_path):
-    package_path = get_package_share_directory(package_name)
-    absolute_file_path = os.path.join(package_path, file_path)
-    try:
-        with open(absolute_file_path, "r") as file:
-            return yaml.safe_load(file)
-    except EnvironmentError:
-        return None
+from launch_param_builder import ParameterBuilder
 
 def generate_launch_description():
     moveit_config = (
@@ -23,9 +14,11 @@ def generate_launch_description():
         .to_moveit_configs()
     )
     
-    # Load servo parameters - NO PREFIX ADDED
-    servo_yaml = load_yaml("arm_moveit_config", "config/servo_parameters.yaml")
-    servo_params = servo_yaml["servo"]["ros__parameters"] 
+    servo_params = {
+        "moveit_servo": ParameterBuilder("arm_moveit_config")
+        .yaml("config/servo_parameters.yaml")
+        .to_dict()
+    }
     
     nodes = [
         # Robot state publisher
@@ -59,18 +52,16 @@ def generate_launch_description():
                 moveit_config.robot_description,
                 moveit_config.robot_description_semantic,
                 moveit_config.robot_description_kinematics,
-                moveit_config.planning_pipelines,
                 moveit_config.joint_limits,
             ],
             output="screen",
         ),
         
-        # Servo node - parameters loaded directly
         Node(
             package="moveit_servo",
             executable="servo_node",
             parameters=[
-                servo_params,  # No moveit_servo prefix
+                servo_params,
                 moveit_config.robot_description,
                 moveit_config.robot_description_semantic,
                 moveit_config.robot_description_kinematics,
