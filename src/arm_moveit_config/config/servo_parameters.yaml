@@ -1,63 +1,61 @@
+# Correct structure for MoveIt Servo parameters
 servo:
-  ros__parameters:
-    start_servo: true
-    default_command_type: 1
-
-    # Robot configuration
-    move_group_name: "arm"
-    planning_frame: "base"
-    ee_frame_name: "compound_3"
-    
-    # Command topics  
-    cartesian_command_in_topic: "/servo_node/delta_twist_cmds"
-    joint_command_in_topic: "/servo_node/delta_joint_cmds"
-    pose_command_in_topic: "/servo_node/pose_target_cmds"
-    
-    # Output to joint trajectory controller
-    command_out_topic: "/arm_controller/joint_trajectory"
-    command_out_type: "trajectory_msgs/JointTrajectory"
-    
-    # Publishing parameters
-    publish_period: 0.1
-    max_expected_latency: 0.5
-    # Publishing control
-    publish_joint_positions: true
-    publish_joint_velocities: false  
-    publish_joint_accelerations: false
-    
+  # GENERAL CONFIG
+  thread_priority: 40
+  publish_period: 0.1
+  max_expected_latency: 0.5
+  move_group_name: "arm"
+  active_subgroup: ""
   
-    linear_velocity_scaling: 1.0      
-    rotational_velocity_scaling: 1.0    
-    joint_velocity_scaling: 1.0       
+  # INCOMING COMMAND SETTINGS  
+  pose_command_in_topic: "~/pose_target_cmds"
+  cartesian_command_in_topic: "~/delta_twist_cmds" 
+  joint_command_in_topic: "~/delta_joint_cmds"
+  command_in_type: "unitless"
+  
+  # VELOCITY SCALING
+  scale:
+    linear: 1.0
+    rotational: 1.0  
+    joint: 1.0
     
-    lower_singularity_threshold: 0.001  
-    hard_stop_singularity_threshold: 0.01  
-    leaving_singularity_threshold_multiplier: 2.0
-    
-    
-    check_collisions: false
-    collision_check_rate: 10.0
-    self_collision_proximity_threshold: 0.01
-    scene_collision_proximity_threshold: 0.02
-    
-
-    use_smoothing: true
-    smoothing_filter_plugin_name: "online_signal_smoothing::ButterworthFilterPlugin"
-    
-    # Joint limits
-    enforce_joint_limits: true
-    
-    # Status monitoring
-    joint_topic: "/joint_states"
-    status_topic: "/servo_node/status"
-    
-    # Planning scene
-    monitored_planning_scene_topic: "/monitored_planning_scene"
-    is_primary_planning_scene_monitor: false
-    
-    # Command handling
-    incoming_command_timeout: 4.0  
-    num_outgoing_halt_msgs_to_publish: 4
-    
-    # Thread priority
-    thread_priority: 40
+  incoming_command_timeout: 4.0
+  
+  # POSE TRACKING SETTINGS
+  pose_tracking:
+    linear_tolerance: 0.001
+    angular_tolerance: 0.01
+  
+  # OUTGOING COMMAND SETTINGS
+  status_topic: "~/status"
+  command_out_topic: "/arm_controller/joint_trajectory" 
+  command_out_type: "trajectory_msgs/JointTrajectory"
+  publish_joint_positions: true
+  publish_joint_velocities: false
+  publish_joint_accelerations: false
+  
+  # PLANNING SCENE MONITOR
+  monitored_planning_scene_topic: "/monitored_planning_scene"
+  joint_topic: "/joint_states"
+  check_octomap_collisions: false
+  is_primary_planning_scene_monitor: false
+  
+  # SMOOTHING PLUGIN
+  use_smoothing: true
+  smoothing_filter_plugin_name: "online_signal_smoothing::ButterworthFilterPlugin"
+  
+  # COLLISION MONITOR  
+  check_collisions: false
+  self_collision_proximity_threshold: 0.01
+  scene_collision_proximity_threshold: 0.02
+  collision_check_rate: 10.0
+  
+  # SINGULARITY CHECKING
+  lower_singularity_threshold: 0.001
+  hard_stop_singularity_threshold: 0.01
+  leaving_singularity_threshold_multiplier: 2.0
+  singularity_step_scale: 0.01
+  
+  # JOINT LIMITING
+  halt_all_joints_in_joint_mode: true
+  halt_all_joints_in_cartesian_mode: true
