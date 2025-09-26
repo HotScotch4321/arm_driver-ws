@@ -54,7 +54,6 @@ def generate_launch_description():
             package="moveit_ros_move_group",
             executable="move_group",
             parameters=[
-                moveit_config.moveit_controllers,
                 moveit_config.robot_description,
                 moveit_config.robot_description_semantic,
                 moveit_config.robot_description_kinematics,
