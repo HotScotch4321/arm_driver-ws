@@ -10,13 +10,13 @@ from moveit_configs_utils import MoveItConfigsBuilder
 def generate_launch_description():
     moveit_config = (
         MoveItConfigsBuilder("my-robot-urdf", package_name="arm_moveit_config")
+        .trajectory_execution(file_path="config/moveit_controllers.yaml")
         .planning_scene_monitor(
             publish_robot_description=True, 
             publish_robot_description_semantic=True
         )
         .planning_pipelines("ompl", ["ompl"])
         .to_moveit_configs()
-        .trajectory_execution(file_path="config/moveit_controllers.yaml")
     )
     
     # Servo parameters
