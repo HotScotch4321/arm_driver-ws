@@ -16,6 +16,7 @@ def generate_launch_description():
         )
         .planning_pipelines("ompl", ["ompl"])
         .to_moveit_configs()
+        .trajectory_execution(file_path="config/moveit_controllers.yaml")
     )
     
     # Servo parameters
