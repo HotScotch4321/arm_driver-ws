@@ -4,16 +4,21 @@ import os
 from launch import LaunchDescription
 from launch_ros.actions import Node
 from ament_index_python.packages import get_package_share_directory
-from moveit_configs_utils import MoveItConfigsBuilder
 from launch_param_builder import ParameterBuilder
+from moveit_configs_utils import MoveItConfigsBuilder
 
 def generate_launch_description():
     moveit_config = (
         MoveItConfigsBuilder("my-robot-urdf", package_name="arm_moveit_config")
-        .planning_pipelines(pipelines=["ompl"], default_planning_pipeline="ompl")
+        .planning_scene_monitor(
+            publish_robot_description=True, 
+            publish_robot_description_semantic=True
+        )
+        .planning_pipelines("ompl", ["ompl"])
         .to_moveit_configs()
     )
     
+    # Servo parameters
     servo_params = {
         "moveit_servo": ParameterBuilder("arm_moveit_config")
         .yaml("config/servo_parameters.yaml")
@@ -44,7 +49,7 @@ def generate_launch_description():
         Node(package="controller_manager", executable="spawner", arguments=["joint_state_broadcaster"], output="screen"),
         Node(package="controller_manager", executable="spawner", arguments=["arm_controller"], output="screen"),
         
-        # Move group
+        # Move group 
         Node(
             package="moveit_ros_move_group",
             executable="move_group",
@@ -52,11 +57,13 @@ def generate_launch_description():
                 moveit_config.robot_description,
                 moveit_config.robot_description_semantic,
                 moveit_config.robot_description_kinematics,
+                moveit_config.planning_pipelines,
                 moveit_config.joint_limits,
             ],
             output="screen",
         ),
         
+        # Servo node
         Node(
             package="moveit_servo",
             executable="servo_node",
@@ -65,7 +72,6 @@ def generate_launch_description():
                 moveit_config.robot_description,
                 moveit_config.robot_description_semantic,
                 moveit_config.robot_description_kinematics,
-                moveit_config.joint_limits,
             ],
             output="screen",
         ),
