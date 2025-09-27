@@ -25,6 +25,7 @@ import rclpy
 from rclpy.node import Node
 from geometry_msgs.msg import TwistStamped
 from control_msgs.msg import JointJog
+from moveit_msgs.srv import ServoCommandType
 import sys
 import termios
 import tty
@@ -47,6 +48,11 @@ class PerseusKeyboardControl(Node):
             10
         )
         
+        self.command_type_client = self.create_client(
+            ServoCommandType, 
+            '/servo_node/switch_command_type'
+        )
+        
         # Control parameters
         self.linear_speed = 0.1    # m/s for Cartesian movement
         self.angular_speed = 0.5   # rad/s for Cartesian rotation
@@ -56,13 +62,39 @@ class PerseusKeyboardControl(Node):
         self.cartesian_mode = True
         self.is_moving = False
         
+        # Joint names matching your URDF
         self.joint_names = ['base', 'shoulder', 'elbow']
         
         # Terminal settings for key capture
         self.old_settings = termios.tcgetattr(sys.stdin)
         
+        # Wait for servo service
+        self.get_logger().info("Waiting for servo command type service...")
+        self.command_type_client.wait_for_service(timeout_sec=5.0)
+        
+        # Set initial command type
+        self.set_command_type()
+        
         self.get_logger().info("Perseus Arm Keyboard Control Started")
         self.print_instructions()
+
+    def set_command_type(self):
+        """Set servo command type: 1=TWIST, 2=JOINT"""
+        if not self.command_type_client.service_is_ready():
+            self.get_logger().warn("Servo command type service not available")
+            return
+            
+        request = ServoCommandType.Request()
+        request.command_type = 1 if self.cartesian_mode else 2
+        
+        future = self.command_type_client.call_async(request)
+        rclpy.spin_until_future_complete(self, future, timeout_sec=1.0)
+        
+        if future.result() is not None:
+            mode = "Cartesian" if self.cartesian_mode else "Joint"
+            self.get_logger().info(f"Servo set to {mode} mode")
+        else:
+            self.get_logger().error("Failed to set servo command type")
 
     def print_instructions(self):
         mode = "CARTESIAN" if self.cartesian_mode else "JOINT"
@@ -125,14 +157,13 @@ class PerseusKeyboardControl(Node):
 
     def process_key(self, key):
         """Process keyboard input and send appropriate commands"""
-        # Exit condition
         if ord(key) == 27:  
             return False
             
-        # Mode switching
         if key.lower() == 'c':
             self.cartesian_mode = not self.cartesian_mode
             self.stop_motion()
+            self.set_command_type()
             self.print_instructions()
             return True
             
@@ -200,7 +231,7 @@ class PerseusKeyboardControl(Node):
                     key = self.get_key()
                     if not self.process_key(key):
                         break
-                
+
                 rclpy.spin_once(self, timeout_sec=0.0)
                 
         except KeyboardInterrupt:
