@@ -8,8 +8,8 @@ moveit_simple_controller_manager:
 
   arm_controller:
     type: FollowJointTrajectory
-    action_ns: follow_joint_trajectory
     joints:
       - base
       - shoulder
       - elbow
+    action_ns: follow_joint_trajectory
