@@ -13,16 +13,6 @@
         <joint name="base"/>
         <joint name="shoulder"/>
         <joint name="elbow"/>
-        <joint name="fixedbase"/>
-        <joint name="fixedservo_base"/>
-        <joint name="piece2"/>
-        <joint name="backforearm"/>
-        <joint name="piece1"/>
-        <joint name="fixedforearm"/>
-        <joint name="fixedplate"/>
-        <joint name="fixedelbowservo"/>
-        <joint name="fixedarm"/>
-        <joint name="baserotate"/>
     </group>
     <group name="hand">
         <link name="compound_4"/>
