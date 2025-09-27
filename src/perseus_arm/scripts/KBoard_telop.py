@@ -56,7 +56,6 @@ class PerseusKeyboardControl(Node):
         self.cartesian_mode = True
         self.is_moving = False
         
-        # Joint names matching your URDF
         self.joint_names = ['base', 'shoulder', 'elbow']
         
         # Terminal settings for key capture
@@ -94,14 +93,14 @@ class PerseusKeyboardControl(Node):
         """Publish Cartesian velocity command"""
         msg = TwistStamped()
         msg.header.stamp = self.get_clock().now().to_msg()
-        msg.header.frame_id = 'base'  # Your planning frame
+        msg.header.frame_id = 'base'  
         
-        msg.twist.linear.x = linear_x
-        msg.twist.linear.y = linear_y
-        msg.twist.linear.z = linear_z
-        msg.twist.angular.x = angular_x
-        msg.twist.angular.y = angular_y
-        msg.twist.angular.z = angular_z
+        msg.twist.linear.x = float(linear_x)
+        msg.twist.linear.y = float(linear_y)
+        msg.twist.linear.z = float(linear_z)
+        msg.twist.angular.x = float(angular_x)
+        msg.twist.angular.y = float(angular_y)
+        msg.twist.angular.z = float(angular_z)
         
         self.twist_pub.publish(msg)
 
@@ -112,7 +111,7 @@ class PerseusKeyboardControl(Node):
         msg.header.frame_id = 'base'
         
         msg.joint_names = self.joint_names
-        msg.velocities = [base, shoulder, elbow]
+        msg.velocities = [float(base), float(shoulder), float(elbow)]
         
         self.joint_pub.publish(msg)
 
@@ -127,7 +126,7 @@ class PerseusKeyboardControl(Node):
     def process_key(self, key):
         """Process keyboard input and send appropriate commands"""
         # Exit condition
-        if ord(key) == 27:  # ESC
+        if ord(key) == 27:  
             return False
             
         # Mode switching
@@ -157,12 +156,12 @@ class PerseusKeyboardControl(Node):
         ang_speed = self.angular_speed
         
         commands = {
-            'w': (speed, 0, 0, 0, 0, 0),      # Forward
-            's': (-speed, 0, 0, 0, 0, 0),     # Backward
-            'a': (0, speed, 0, 0, 0, 0),      # Left
-            'd': (0, -speed, 0, 0, 0, 0),     # Right
-            'q': (0, 0, speed, 0, 0, 0),      # Up
-            'e': (0, 0, -speed, 0, 0, 0),     # Down
+            'w': (speed, 0.0, 0.0, 0.0, 0.0, 0.0),      # Forward
+            's': (-speed, 0.0, 0.0, 0.0, 0.0, 0.0),     # Backward
+            'a': (0.0, speed, 0.0, 0.0, 0.0, 0.0),      # Left
+            'd': (0.0, -speed, 0.0, 0.0, 0.0, 0.0),     # Right
+            'q': (0.0, 0.0, speed, 0.0, 0.0, 0.0),      # Up
+            'e': (0.0, 0.0, -speed, 0.0, 0.0, 0.0),     # Down
         }
         
         if key.lower() in commands:
@@ -175,12 +174,12 @@ class PerseusKeyboardControl(Node):
         speed = self.joint_speed
         
         commands = {
-            'j': (-speed, 0, 0),    # Base left
-            'l': (speed, 0, 0),     # Base right
-            'i': (0, speed, 0),     # Shoulder up
-            'k': (0, -speed, 0),    # Shoulder down
-            'u': (0, 0, speed),     # Elbow extend
-            'o': (0, 0, -speed),    # Elbow retract
+            'j': (-speed, 0.0, 0.0),    # Base left
+            'l': (speed, 0.0, 0.0),     # Base right
+            'i': (0.0, speed, 0.0),     # Shoulder up
+            'k': (0.0, -speed, 0.0),    # Shoulder down
+            'u': (0.0, 0.0, speed),     # Elbow extend
+            'o': (0.0, 0.0, -speed),    # Elbow retract
         }
         
         if key.lower() in commands:
@@ -197,13 +196,11 @@ class PerseusKeyboardControl(Node):
         """Main control loop"""
         try:
             while rclpy.ok():
-                # Check for keyboard input with timeout
                 if select.select([sys.stdin], [], [], 0.1)[0]:
                     key = self.get_key()
                     if not self.process_key(key):
                         break
                 
-                # Keep ROS spinning
                 rclpy.spin_once(self, timeout_sec=0.0)
                 
         except KeyboardInterrupt:
