@@ -26,6 +26,10 @@ def generate_launch_description():
         .to_dict()
     }
     
+    # Required servo node parameters
+    acceleration_filter_update_period = {"update_period": 0.01}
+    planning_group_name = {"planning_group_name": "arm"}
+    
     nodes = [
         # Robot state publisher
         Node(
@@ -65,15 +69,17 @@ def generate_launch_description():
             output="screen",
         ),
         
-        # Servo node
         Node(
             package="moveit_servo",
             executable="servo_node",
             parameters=[
                 servo_params,
+                acceleration_filter_update_period,
+                planning_group_name,
                 moveit_config.robot_description,
                 moveit_config.robot_description_semantic,
                 moveit_config.robot_description_kinematics,
+                moveit_config.joint_limits,
             ],
             output="screen",
         ),
